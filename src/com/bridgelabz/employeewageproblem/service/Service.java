@@ -6,5 +6,7 @@ public interface Service {
    boolean checkEmployee();
    float calculateEmployeeWage();
    float calculateAllEmployeeWage();
+   void calculateUsingSwitchCase();
+   double empCheck();
 
 }

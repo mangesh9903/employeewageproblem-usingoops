@@ -2,8 +2,8 @@ package com.bridgelabz.employeewageproblem.model;
 
 public class EmployeeWage {
 
-    public static final int IS_FULL_TIME = 2;
-    public static final int IS_PART_TIME = 1;
+    public  final int IS_FULL_TIME = 2;
+    public  final int IS_PART_TIME = 1;
     private Company company;
     private int maxHoursInMonth;
     private int empRatePerHour;
