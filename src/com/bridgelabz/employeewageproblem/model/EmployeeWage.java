@@ -52,4 +52,14 @@ public class EmployeeWage {
     public void setNumberOfWorkingDays(int numberOfWorkingDays) {
         this.numberOfWorkingDays = numberOfWorkingDays;
     }
+
+    @Override
+    public String toString() {
+        return "EmployeeWage{" +
+                "company=" + company +
+                ", maxHoursInMonth=" + maxHoursInMonth +
+                ", empRatePerHour=" + empRatePerHour +
+                ", numberOfWorkingDays=" + numberOfWorkingDays +
+                '}';
+    }
 }
