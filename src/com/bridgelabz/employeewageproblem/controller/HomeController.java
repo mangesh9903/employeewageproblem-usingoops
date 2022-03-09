@@ -16,6 +16,7 @@ public class HomeController {
         System.out.println("2. Enter 2 to Calculate FullTime Employee Wage : ");
         System.out.println("3. Enter 3 to Calculate All Employee Wage : ");
         System.out.println("4. Enter 4 to Calculate All Employee Wage Using Switch Case: ");
+        System.out.println("5. Enter 5 to Calculate Monthly Employee Salary: ");
         int ch = scanner.nextInt();
         System.out.println();
         switch (ch) {
@@ -32,6 +33,9 @@ public class HomeController {
                 break;
             case 4:
                 service.calculateUsingSwitchCase();
+                break;
+            case 5:
+                service.calculateEmployeeWageForMonth();
                 break;
             default:
                 System.out.println("Invalid Input");
