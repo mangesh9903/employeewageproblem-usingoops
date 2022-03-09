@@ -6,7 +6,8 @@ import com.bridgelabz.employeewageproblem.service.Service;
 
 public class ServiceImp implements Service {
 
-    EmployeeWage employeeWage = new EmployeeWage();
+    Company company = new Company("D-Mart");
+    EmployeeWage employeeWage = new EmployeeWage(company, 20, 20, 20);
 
 
     /**
@@ -17,7 +18,7 @@ public class ServiceImp implements Service {
     @Override
     public boolean checkEmployee() {
         double empCheck = Math.floor(Math.random() * 10) % 3;
-        if (empCheck == EmployeeWage.IS_FULL_TIME) {
+        if (empCheck == employeeWage.IS_FULL_TIME) {
             System.out.println("Employee  is Present.");
             return true;
         } else {
@@ -53,13 +54,13 @@ public class ServiceImp implements Service {
         float salary = 0;
         employeeWage.setEmpRatePerHour(20);
         double empCheck = Math.floor(Math.random() * 10) % 3;
-        if (empCheck == EmployeeWage.IS_FULL_TIME) {
+        if (empCheck == employeeWage.IS_FULL_TIME) {
             System.out.println("Employee  is Full Time.");
             int emphrs = 8;
 
             salary = (employeeWage.getEmpRatePerHour() * emphrs);
             return salary;
-        } else if (empCheck == EmployeeWage.IS_PART_TIME) {
+        } else if (empCheck == employeeWage.IS_PART_TIME) {
 
             System.out.println("Employee is Part Time");
             int emphrs = 4;
@@ -70,5 +71,39 @@ public class ServiceImp implements Service {
             System.out.println("Employee is Abscent");
             return salary = 0;
         }
+    }
+
+    /**
+     * @return returing Result Whether It is Full Time Or Part Time Or Abscent
+     */
+    @Override
+    public double empCheck() {
+        double empCheck = Math.floor(Math.random() * 10) % 3;
+        return empCheck;
+    }
+
+    /**
+     * Usecase4 Calculating All Employee Wage Using Switch case statement
+     */
+    @Override
+    public void calculateUsingSwitchCase() {
+        int emphr;
+        float salary = 0;
+        switch ((int) empCheck()) {
+            case 1:
+                System.out.println("Employee is Part Time");
+                emphr = 4;
+                break;
+            case 2:
+                System.out.println("Employee is Full Time");
+                emphr = 8;
+                break;
+            default:
+                System.out.println("Employee is Abscent");
+                emphr = 0;
+                break;
+        }
+        salary = (employeeWage.getEmpRatePerHour() * emphr);
+        System.out.println(employeeWage.getCompany() + " Employee Salary is : " + salary);
     }
 }
