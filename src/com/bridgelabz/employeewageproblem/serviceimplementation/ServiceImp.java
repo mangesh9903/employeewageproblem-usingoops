@@ -1,5 +1,6 @@
 package com.bridgelabz.employeewageproblem.serviceimplementation;
 
+import com.bridgelabz.employeewageproblem.model.Company;
 import com.bridgelabz.employeewageproblem.model.EmployeeWage;
 import com.bridgelabz.employeewageproblem.service.Service;
 
@@ -41,5 +42,33 @@ public class ServiceImp implements Service {
         } else
             salary = 0;
         return salary;
+    }
+
+    /**
+     * Usecase3 Calculating All Employee Wage
+     *
+     * @return result salary
+     */
+    public float calculateAllEmployeeWage() {
+        float salary = 0;
+        employeeWage.setEmpRatePerHour(20);
+        double empCheck = Math.floor(Math.random() * 10) % 3;
+        if (empCheck == EmployeeWage.IS_FULL_TIME) {
+            System.out.println("Employee  is Full Time.");
+            int emphrs = 8;
+
+            salary = (employeeWage.getEmpRatePerHour() * emphrs);
+            return salary;
+        } else if (empCheck == EmployeeWage.IS_PART_TIME) {
+
+            System.out.println("Employee is Part Time");
+            int emphrs = 4;
+
+            salary = (employeeWage.getEmpRatePerHour() * emphrs);
+            return salary;
+        } else {
+            System.out.println("Employee is Abscent");
+            return salary = 0;
+        }
     }
 }

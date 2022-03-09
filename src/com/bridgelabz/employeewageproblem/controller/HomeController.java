@@ -8,11 +8,13 @@ import java.util.Scanner;
 public class HomeController {
 
     public static void main(String[] args) {
+        float salary;
         System.out.println(" Welcome to Employee Wage Computation Program. ");
         Service service = new ServiceImp();
         Scanner scanner = new Scanner(System.in);
         System.out.println("1. Enter 1 to Check Use Case1 : ");
-        System.out.println("2. Enter 2 To Calculate FullTime Employee Wage : ");
+        System.out.println("2. Enter 2 to Calculate FullTime Employee Wage : ");
+        System.out.println("3. Enter 3 to Calculate All Employee Wage : ");
         int ch = scanner.nextInt();
         System.out.println();
         switch (ch) {
@@ -20,7 +22,11 @@ public class HomeController {
                 service.checkEmployee();
                 break;
             case 2:
-                float salary = service.calculateEmployeeWage();
+                salary = service.calculateEmployeeWage();
+                System.out.println("Employee Salary is : " + salary);
+                break;
+            case 3:
+                salary = service.calculateAllEmployeeWage();
                 System.out.println("Employee Salary is : " + salary);
                 break;
             default:
