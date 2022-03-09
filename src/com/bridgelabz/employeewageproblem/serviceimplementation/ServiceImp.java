@@ -7,8 +7,10 @@ import com.bridgelabz.employeewageproblem.service.Service;
 public class ServiceImp implements Service {
 
     float totalSalary = 0.0f;
+    int totalEmpHour = 0;
+    int totalWorkingDays = 0;
     Company company = new Company("D-Mart");
-    EmployeeWage employeeWage = new EmployeeWage(company, 20, 20, 20);
+    EmployeeWage employeeWage = new EmployeeWage(company, 100, 20, 20);
 
 
     /**
@@ -35,11 +37,11 @@ public class ServiceImp implements Service {
      */
     @Override
     public float calculateEmployeeWage() {
-        float salary = 0;
+        float salary;
+        int employeeHours;
         if (checkEmployee()) {
-            int emphrs = 8;
-            employeeWage.setEmpRatePerHour(20);
-            salary = (employeeWage.getEmpRatePerHour() * emphrs);
+            employeeHours = 8;
+            salary = (employeeWage.getEmpRatePerHour() * employeeHours);
             return salary;
         } else
             salary = 0;
@@ -52,25 +54,27 @@ public class ServiceImp implements Service {
      * @return result salary
      */
     public float calculateAllEmployeeWage() {
-        float salary = 0;
+        int employeeHours;
+        float salary;
         employeeWage.setEmpRatePerHour(20);
         double empCheck = Math.floor(Math.random() * 10) % 3;
         if (empCheck == employeeWage.IS_FULL_TIME) {
             System.out.println("Employee  is Full Time.");
-            int emphrs = 8;
+            employeeHours = 8;
 
-            salary = (employeeWage.getEmpRatePerHour() * emphrs);
+            salary = (employeeWage.getEmpRatePerHour() * employeeHours);
             return salary;
         } else if (empCheck == employeeWage.IS_PART_TIME) {
 
             System.out.println("Employee is Part Time");
-            int emphrs = 4;
+            employeeHours = 4;
 
-            salary = (employeeWage.getEmpRatePerHour() * emphrs);
+            salary = (employeeWage.getEmpRatePerHour() * employeeHours);
             return salary;
         } else {
             System.out.println("Employee is Abscent");
-            return salary = 0;
+            salary = 0;
+            return salary;
         }
     }
 
@@ -79,8 +83,7 @@ public class ServiceImp implements Service {
      */
     @Override
     public double empCheck() {
-        double empCheck = Math.floor(Math.random() * 10) % 3;
-        return empCheck;
+        return Math.floor(Math.random() * 10) % 3;
     }
 
 
@@ -89,49 +92,81 @@ public class ServiceImp implements Service {
      */
     @Override
     public void calculateUsingSwitchCase() {
-        int emphr;
-        float salary = 0;
+        int employeeHours;
+        float salary;
+        System.out.println("===============" + employeeWage.getCompany() + "======================");
         switch ((int) empCheck()) {
             case 1:
                 System.out.println("Employee is Part Time");
-                emphr = 4;
+                employeeHours = 4;
                 break;
             case 2:
                 System.out.println("Employee is Full Time");
-                emphr = 8;
+                employeeHours = 8;
                 break;
             default:
                 System.out.println("Employee is Abscent");
-                emphr = 0;
+                employeeHours = 0;
                 break;
         }
-        salary = (employeeWage.getEmpRatePerHour() * emphr);
-        System.out.println(employeeWage.getCompany() + " Employee Salary is : " + salary);
+        salary = (employeeWage.getEmpRatePerHour() * employeeHours);
+        System.out.println("Employee Salary is : " + salary);
     }
 
     /**
-     * Usecase Calculate Monthly Employee Wage
+     * Usecase5 Calculate Monthly Employee Wage
      */
     @Override
     public void calculateEmployeeWageForMonth() {
-        int emphr;
-        float salary = 0.0f;
+        int employeeHours;
+        float salary;
         for (int index = 1; index <= employeeWage.getNumberOfWorkingDays(); index++) {
 
             switch ((int) empCheck()) {
                 case 1:
-                    emphr = 4;
+                    employeeHours = 4;
                     break;
                 case 2:
-                    emphr = 8;
+                    employeeHours = 8;
                     break;
                 default:
-                    emphr = 0;
+                    employeeHours = 0;
                     break;
             }
-            salary = (employeeWage.getEmpRatePerHour() * emphr);
+            salary = (employeeWage.getEmpRatePerHour() * employeeHours);
             totalSalary = (totalSalary + salary);
         }
         System.out.println("===============" + employeeWage.getCompany() + "======================" + "\n" + " Employee Monthly Salary is : " + totalSalary);
+    }
+
+    /**
+     * UseCase6 Calculate Employee Monthly Wage Till Condition not became false
+     */
+    @Override
+    public void calculateEmployeeWageTillCondition() {
+        int employeeHours;
+        while (totalEmpHour < employeeWage.getMaxHoursInMonth() && totalWorkingDays < employeeWage.getNumberOfWorkingDays()) {
+            totalWorkingDays++;
+
+
+            switch ((int) empCheck()) {
+                case 1:
+                    employeeHours = 4;
+                    break;
+                case 2:
+                    employeeHours = 8;
+                    break;
+                default:
+                    employeeHours = 0;
+                    break;
+            }
+            totalEmpHour = (totalEmpHour + employeeHours);
+        }
+
+        totalSalary = (totalEmpHour * employeeWage.getEmpRatePerHour());
+        System.out.println("===============" + employeeWage.getCompany() + "======================");
+        System.out.println("Total Working Hours of the Month: " + totalEmpHour);
+        System.out.println("Employee Monthly Salary is : " + totalSalary);
+
     }
 }

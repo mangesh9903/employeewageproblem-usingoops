@@ -12,11 +12,13 @@ public class HomeController {
         System.out.println(" Welcome to Employee Wage Computation Program. ");
         Service service = new ServiceImp();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("1. Enter 1 to Check Use Case1 : ");
-        System.out.println("2. Enter 2 to Calculate FullTime Employee Wage : ");
-        System.out.println("3. Enter 3 to Calculate All Employee Wage : ");
-        System.out.println("4. Enter 4 to Calculate All Employee Wage Using Switch Case: ");
-        System.out.println("5. Enter 5 to Calculate Monthly Employee Salary: ");
+        System.out.println("       =================   Menu   =================   ");
+        System.out.println("   1) Enter 1 to Check Use Case1 : ");
+        System.out.println("   2) Enter 2 to Calculate FullTime Employee Wage : ");
+        System.out.println("   3) Enter 3 to Calculate All Employee Wage : ");
+        System.out.println("   4) Enter 4 to Calculate All Employee Wage Using Switch Case: ");
+        System.out.println("   5) Enter 5 to Calculate Monthly Employee Salary: ");
+        System.out.println("   6) Enter 6 to Calculate Monthly Employee Salary till Condition not became false");
         int ch = scanner.nextInt();
         System.out.println();
         switch (ch) {
@@ -36,6 +38,9 @@ public class HomeController {
                 break;
             case 5:
                 service.calculateEmployeeWageForMonth();
+                break;
+            case 6:
+                service.calculateEmployeeWageTillCondition();
                 break;
             default:
                 System.out.println("Invalid Input");
