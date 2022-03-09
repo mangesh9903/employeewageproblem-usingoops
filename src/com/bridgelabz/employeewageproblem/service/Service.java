@@ -8,5 +8,6 @@ public interface Service {
    float calculateAllEmployeeWage();
    void calculateUsingSwitchCase();
    double empCheck();
+   void calculateEmployeeWageForMonth();
 
 }

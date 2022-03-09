@@ -6,6 +6,7 @@ import com.bridgelabz.employeewageproblem.service.Service;
 
 public class ServiceImp implements Service {
 
+    float totalSalary = 0.0f;
     Company company = new Company("D-Mart");
     EmployeeWage employeeWage = new EmployeeWage(company, 20, 20, 20);
 
@@ -82,6 +83,7 @@ public class ServiceImp implements Service {
         return empCheck;
     }
 
+
     /**
      * Usecase4 Calculating All Employee Wage Using Switch case statement
      */
@@ -105,5 +107,31 @@ public class ServiceImp implements Service {
         }
         salary = (employeeWage.getEmpRatePerHour() * emphr);
         System.out.println(employeeWage.getCompany() + " Employee Salary is : " + salary);
+    }
+
+    /**
+     * Usecase Calculate Monthly Employee Wage
+     */
+    @Override
+    public void calculateEmployeeWageForMonth() {
+        int emphr;
+        float salary = 0.0f;
+        for (int index = 1; index <= employeeWage.getNumberOfWorkingDays(); index++) {
+
+            switch ((int) empCheck()) {
+                case 1:
+                    emphr = 4;
+                    break;
+                case 2:
+                    emphr = 8;
+                    break;
+                default:
+                    emphr = 0;
+                    break;
+            }
+            salary = (employeeWage.getEmpRatePerHour() * emphr);
+            totalSalary = (totalSalary + salary);
+        }
+        System.out.println("===============" + employeeWage.getCompany() + "======================" + "\n" + " Employee Monthly Salary is : " + totalSalary);
     }
 }
