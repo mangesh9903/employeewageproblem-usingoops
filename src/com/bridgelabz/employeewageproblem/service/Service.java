@@ -3,6 +3,7 @@ package com.bridgelabz.employeewageproblem.service;
 public interface Service {
 
 
-  public boolean checkEmployee();
+   boolean checkEmployee();
+   float calculateEmployeeWage();
 
 }

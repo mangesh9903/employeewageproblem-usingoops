@@ -8,10 +8,10 @@ public class ServiceImp implements Service {
     EmployeeWage employeeWage = new EmployeeWage();
 
 
-
-    /** UseCase1  Checking Employee is Present Or Abscent.
+    /**
+     * UseCase1  Checking Employee is Present Or Abscent.
      *
-     * @return  result
+     * @return result
      */
     @Override
     public boolean checkEmployee() {
@@ -23,5 +23,23 @@ public class ServiceImp implements Service {
             System.out.println("Employee is Abscent");
         }
         return false;
+    }
+
+    /**
+     * UseCase2 Calculating Employee Salary
+     *
+     * @return returning salary
+     */
+    @Override
+    public float calculateEmployeeWage() {
+        float salary = 0;
+        if (checkEmployee()) {
+            int emphrs = 8;
+            employeeWage.setEmpRatePerHour(20);
+            salary = (employeeWage.getEmpRatePerHour() * emphrs);
+            return salary;
+        } else
+            salary = 0;
+        return salary;
     }
 }
