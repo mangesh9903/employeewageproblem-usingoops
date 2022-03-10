@@ -1,5 +1,8 @@
 package com.bridgelabz.employeewageproblem.service;
 
+import com.bridgelabz.employeewageproblem.model.Company;
+import com.bridgelabz.employeewageproblem.model.EmployeeWage;
+
 public interface Service {
 
 
@@ -15,6 +18,7 @@ public interface Service {
 
     void calculateEmployeeWageForMonth();
 
-    void calculateEmployeeWageTillCondition();
+    void calculateEmployeeWageTillCondition(EmployeeWage employeeWage);
+
 
 }

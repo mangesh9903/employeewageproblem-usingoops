@@ -8,7 +8,6 @@ public class EmployeeWage {
     private int maxHoursInMonth;
     private int empRatePerHour;
     private int numberOfWorkingDays;
-
     public EmployeeWage() {
 
     }
@@ -19,7 +18,6 @@ public class EmployeeWage {
         this.empRatePerHour = empRatePerHour;
         this.numberOfWorkingDays = numberOfWorkingDays;
     }
-
 
     public Company getCompany() {
         return company;
