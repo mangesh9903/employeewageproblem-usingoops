@@ -4,9 +4,6 @@ public class Company {
 
     private String companyName;
 
-    public Company() {
-        companyName = null;
-    }
 
     public Company(String companyName) {
         this.companyName = companyName;

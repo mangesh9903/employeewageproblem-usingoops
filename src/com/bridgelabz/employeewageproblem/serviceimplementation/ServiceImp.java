@@ -4,14 +4,20 @@ import com.bridgelabz.employeewageproblem.model.Company;
 import com.bridgelabz.employeewageproblem.model.EmployeeWage;
 import com.bridgelabz.employeewageproblem.service.Service;
 
+import javax.swing.text.html.parser.Entity;
+import java.util.*;
+
 public class ServiceImp implements Service {
 
-    float totalSalary = 0.0f;
-    int totalEmpHour = 0;
-    int totalWorkingDays = 0;
+    public float totalSalary = 0.0f;
+    public int totalEmpHour = 0;
+    public int totalWorkingDays = 0;
+    public int numberOfCompany = 0;
     Company company = new Company("D-Mart");
+    Company company1 = new Company("D-Mart");
     EmployeeWage employeeWage = new EmployeeWage(company, 100, 20, 20);
-
+    Map<EmployeeWage, Integer> map = new HashMap<>();
+    private EmployeeWage[] employeeWagesArray;
 
     /**
      * UseCase1  Checking Employee is Present Or Abscent.
@@ -143,7 +149,7 @@ public class ServiceImp implements Service {
      * UseCase6 Calculate Employee Monthly Wage Till Condition not became false
      */
     @Override
-    public void calculateEmployeeWageTillCondition() {
+    public void calculateEmployeeWageTillCondition(EmployeeWage employeeWage) {
         int employeeHours;
         while (totalEmpHour < employeeWage.getMaxHoursInMonth() && totalWorkingDays < employeeWage.getNumberOfWorkingDays()) {
             totalWorkingDays++;
@@ -161,12 +167,21 @@ public class ServiceImp implements Service {
                     break;
             }
             totalEmpHour = (totalEmpHour + employeeHours);
+            System.out.println("Day : " + totalWorkingDays + " Employee Hours : " + employeeHours);
         }
-
-        totalSalary = (totalEmpHour * employeeWage.getEmpRatePerHour());
-        System.out.println("===============" + employeeWage.getCompany() + "======================");
         System.out.println("Total Working Hours of the Month: " + totalEmpHour);
-        System.out.println("Employee Monthly Salary is : " + totalSalary);
+        totalSalary = (totalEmpHour * employeeWage.getEmpRatePerHour());
+        System.out.println("Total Salary of  " + employeeWage.getCompany() + " is : " + totalSalary);
+
+        map.put(employeeWage, (int) totalSalary);
+
+        Set<Map.Entry<EmployeeWage, Integer>> entries = map.entrySet();
+        for (Map.Entry<EmployeeWage, Integer> map : entries) {
+            System.out.println(map.getKey() + " Of  Total Salary is : " + map.getValue());
+        }
 
     }
 }
+
+
+
