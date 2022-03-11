@@ -16,6 +16,7 @@ public class ServiceImp implements Service {
     Company company = new Company("D-Mart");
     Company company1 = new Company("D-Mart");
     EmployeeWage employeeWage = new EmployeeWage(company, 100, 20, 20);
+    Map<EmployeeWage, Integer> map = new HashMap<>();
 
     /**
      * UseCase1  Checking Employee is Present Or Abscent.
@@ -171,6 +172,12 @@ public class ServiceImp implements Service {
         totalSalary = (totalEmpHour * employeeWage.getEmpRatePerHour());
         System.out.println("Total Salary of  " + employeeWage.getCompany() + " is : " + totalSalary);
 
+        map.put(employeeWage, (int) totalSalary);
+
+        Set<Map.Entry<EmployeeWage, Integer>> entries = map.entrySet();
+        for (Map.Entry<EmployeeWage, Integer> map : entries) {
+            System.out.println(map.getKey() + " Of  Total Wage is :===> " + map.getValue());
+        }
 
     }
 }
