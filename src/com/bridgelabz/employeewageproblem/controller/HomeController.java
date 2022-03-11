@@ -21,7 +21,7 @@ public class HomeController {
             System.out.println("   3) Enter 3 to Calculate All Employee Wage : ");
             System.out.println("   4) Enter 4 to Calculate All Employee Wage Using Switch Case: ");
             System.out.println("   5) Enter 5 to Calculate Monthly Employee Salary: ");
-            System.out.println("   6) Enter 6 to Calculate Monthly Employee Salary till Condition not became false");
+            System.out.println("   6) Enter 6 to Calculate Monthly Employee Salary till Condition not became false: ");
             int ch = scanner.nextInt();
             System.out.println();
             switch (ch) {
