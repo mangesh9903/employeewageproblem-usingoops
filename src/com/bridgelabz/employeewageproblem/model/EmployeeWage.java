@@ -6,6 +6,7 @@ public class EmployeeWage {
     private int maxHoursInMonth;
     private int empRatePerHour;
     private int numberOfWorkingDays;
+
     public EmployeeWage() {
 
     }
