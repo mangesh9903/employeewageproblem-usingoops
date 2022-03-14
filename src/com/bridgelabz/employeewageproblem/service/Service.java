@@ -5,7 +5,6 @@ import com.bridgelabz.employeewageproblem.model.EmployeeWage;
 
 public interface Service {
 
-
     boolean checkEmployee();
 
     float calculateEmployeeWage();
