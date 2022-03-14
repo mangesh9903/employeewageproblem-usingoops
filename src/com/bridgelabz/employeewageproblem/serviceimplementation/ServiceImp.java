@@ -26,7 +26,7 @@ public class ServiceImp implements Service {
     @Override
     public boolean checkEmployee() {
         double empCheck = Math.floor(Math.random() * 10) % 3;
-        if (empCheck == employeeWage.IS_FULL_TIME) {
+        if (empCheck == Service.IS_FULL_TIME) {
             System.out.println("Employee  is Present.");
             return true;
         } else {
@@ -63,13 +63,13 @@ public class ServiceImp implements Service {
         float salary;
         employeeWage.setEmpRatePerHour(20);
         double empCheck = Math.floor(Math.random() * 10) % 3;
-        if (empCheck == employeeWage.IS_FULL_TIME) {
+        if (empCheck == Service.IS_FULL_TIME) {
             System.out.println("Employee  is Full Time.");
             employeeHours = 8;
 
             salary = (employeeWage.getEmpRatePerHour() * employeeHours);
             return salary;
-        } else if (empCheck == employeeWage.IS_PART_TIME) {
+        } else if (empCheck == Service.IS_PART_TIME) {
 
             System.out.println("Employee is Part Time");
             employeeHours = 4;
