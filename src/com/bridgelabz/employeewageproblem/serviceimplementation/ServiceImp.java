@@ -14,9 +14,8 @@ public class ServiceImp implements Service {
     public int totalWorkingDays = 0;
     public int numberOfCompany = 0;
     Company company = new Company("D-Mart");
-    Company company1 = new Company("D-Mart");
     EmployeeWage employeeWage = new EmployeeWage(company, 100, 20, 20);
-    Map<EmployeeWage, Integer> map = new HashMap<>();
+    List<EmployeeWage> employeeWageList = new ArrayList<>();
 
     /**
      * UseCase1  Checking Employee is Present Or Abscent.
@@ -144,9 +143,7 @@ public class ServiceImp implements Service {
         System.out.println("===============" + employeeWage.getCompany() + "======================" + "\n" + " Employee Monthly Salary is : " + totalSalary);
     }
 
-    /**
-     * UseCase6 Calculate Employee Monthly Wage Till Condition not became false
-     */
+
     @Override
     public void calculateEmployeeWageTillCondition(EmployeeWage employeeWage) {
         int employeeHours;
@@ -172,12 +169,11 @@ public class ServiceImp implements Service {
         totalSalary = (totalEmpHour * employeeWage.getEmpRatePerHour());
         System.out.println("Total Salary of  " + employeeWage.getCompany() + " is : " + totalSalary);
 
-        map.put(employeeWage, (int) totalSalary);
-
-        Set<Map.Entry<EmployeeWage, Integer>> entries = map.entrySet();
-        for (Map.Entry<EmployeeWage, Integer> map : entries) {
-            System.out.println(map.getKey() + " Of  Total Wage is :===> " + map.getValue());
+        employeeWageList.add(employeeWage);
+        for (EmployeeWage employeeWage1 : employeeWageList) {
+            System.out.println(employeeWage1);
         }
+
 
     }
 }
